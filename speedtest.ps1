@@ -12,7 +12,8 @@ Param (
 while (1) {
   $speed = fast-speedtest $token
   Write-Host $speed
-  "$(Get-Date),$($speed.split(' ')[1])" >> $out
+  $now = Get-Date -Format 'yyyy/MM/dd hh:mm:ss'
+  "$now,$($speed.split(' ')[1])" >> $out
   Start-Sleep($freq)
 }
 
