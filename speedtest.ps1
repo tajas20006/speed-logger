@@ -9,18 +9,19 @@ Param (
   [int]$freq = 15
 )
 
-if (-Not $out) {
-  mkdir result -Force
-  $now = Get-Date -Format 'yyyyMMdd_hhmmss'
-  $out = "./result/$now.csv"
-}
-Write-Host Writing result to $out
-
 while (1) {
+  if ($out) {
+    $outfile = $out
+  }
+  else {
+    $date = Get-Date -Format 'yyyyMMdd'
+    $outfile = "./result/$date.csv"
+  }
+
   $speed = fast-speedtest $token
   Write-Host $speed
   $now = Get-Date -Format 'yyyy/MM/dd hh:mm:ss'
-  "$now,$($speed.split(' ')[1])" >> $out
+  "$now,$($speed.split(' ')[1])" >> $outfile
   Start-Sleep($freq)
 }
 
