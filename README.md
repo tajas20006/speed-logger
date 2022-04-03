@@ -6,7 +6,7 @@ This tool uses fast.com API to periodically check and log network speed to CSV.
 
 1. [nodejs](https://nodejs.org/ja/download/)
 
-2. fast.com API command line tool
+2. [fast.com API](https://github.com/branchard/fast-speedtest-api) command line tool
 
     `npm install --global fast-speedtest-api`
 
@@ -32,9 +32,10 @@ This tool uses fast.com API to periodically check and log network speed to CSV.
     `.\speedtest.ps1 <token>`
 
     This will get response from fast.com API,
-    wait 5 seconds, and call the API again.
+    wait 15 seconds, and call the API again.
 
-3. The network speed will be logged in `speed.csv`.
+3. The network speed will be logged in
+    `./result/yyyyMMdd_hhmmss.csv`.
 
 4. `Ctrl+C` to stop
 

@@ -3,11 +3,18 @@ Param (
   [string]$token,
 
   [Parameter()]
-  [string]$out = "speed.csv",
+  [string]$out,
 
   [Parameter()]
-  [int]$freq = 5
+  [int]$freq = 15
 )
+
+if (-Not $out) {
+  mkdir result -Force
+  $now = Get-Date -Format 'yyyyMMdd_hhmmss'
+  $out = "./result/$now.csv"
+}
+Write-Host Writing result to $out
 
 while (1) {
   $speed = fast-speedtest $token
